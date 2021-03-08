@@ -9,7 +9,7 @@ import Resume from './components/Resume';
 import Contact from './components/Contact';
 import Error from './components/Error';
 import Navigation from './components/Navigation';
-import Stylesheet from './components/Stylesheet';
+
  
 export class App extends Component {
   render() {
@@ -17,7 +17,6 @@ export class App extends Component {
          
        <BrowserRouter>
         <div>
-        <Stylesheet />
           <Navigation />
             <Switch>
              <Route path="/" component={Home} exact/>

@@ -2,37 +2,56 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.background-color {
+    color: #1a1c20;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.homeHeading {
+    color: #004466;
+    text-align: center;
+    font-size: 1000%;
+    line-height: 200px;
+    height: 200px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.homeSubHeading {
+    color: #004466;
+    font-size: 200%;
+    text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.homeButton {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border:0.1em solid #1a1c20;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family:'Roboto',sans-serif;
+    font-weight: 300;
+    color:#1a1c20;
+    text-align: center;
+    transition: all 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+a.homeButton:hover{
+    color:#000000;
+    background-color: #0099e0;
+    }
+
+    .navLink {
+        text-align: center;
+        width: 50%;
+        align-items: center;
+        list-style-type: none;
+    }
+
+    .contact-form {
+        background-color: #0099e0;
+        position: relative;
+        width: 20%;
+        display: inline-block;
+        margin-left: 550px;
+        text-align: center;
+    }

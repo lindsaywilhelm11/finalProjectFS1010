@@ -1,14 +1,20 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
  
-const Navigation = () => {
+function Navigation() {
+   const navStyle = {
+      color: '#1a1c20'
+   };
+
     return (
        <div>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/portfolio">Portfolio</NavLink>
-          <NavLink to="/resume">Resume</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
+          <ul className='navLink'>
+          <Link style={navStyle} to="/"><li>Home</li></Link>
+          <Link style={navStyle} to="/about"><li>About</li></Link>
+          <Link style={navStyle} to="/portfolio"><li>Portfolio</li></Link>
+          <Link style={navStyle} to="/resume"><li>Resume</li></Link>
+          <Link style={navStyle} to="/contact"><li>Contact</li></Link>
+          </ul>
        </div>
     );
 }
