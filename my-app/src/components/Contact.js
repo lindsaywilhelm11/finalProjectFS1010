@@ -1,17 +1,36 @@
 import React, { useState } from 'react';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import axios from 'axios';
 
- 
+
+
+
 const Contact = () => {
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [phone, setPhone] = useState("")
-    const [email, setEmail] = useState("")
-    const [message, setMessage] = useState("")
-    const handleSubmit = (e) => {
-      e.preventDefault();
-    }
+  const [userInput, setUserInput] = useState(
+    { firstName: '', lastName: '', email: '', message: '' }
+  );
+  
 
-    
+const handleChange = (e) => {
+  setUserInput({...userInput, [e.target.name]: e.target.value})
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault(
+    axios.post(`http://localhost:3000/contact_form/entries`, userInput)
+      .then(function (response) {
+        console.log(response)
+        alert('Your message was submitted successfully')
+      })
+      .catch(function(error){
+        console.log(error)
+        alert('There was an error submitting your message')
+      })
+  )
+}
+  
+
 
     return (
         <article>
@@ -23,40 +42,50 @@ const Contact = () => {
         <h2>Get In Touch</h2>
         <p>Send me a message and I'll get back to you as soon as possible!</p>
         <article>
-          <section id="error" />
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <section className="input_field">
-              <label htmlFor="fname">First Name:</label><br />
-              <input type="text" value={firstName} className="form-control" placeholder="John" required onChange={(e) => setFirstName(e.target.value)} />
-            </section>
-            <br />
-            <section className="input_field">
-              <label htmlFor="lname">Last Name:</label><br />
-              <input type="text" value={lastName} className="form-control" placeholder="Doe" required onChange={(e) => setLastName(e.target.value)} />
-            </section>
-            <br />
-            <section className="input_field">
-              <label htmlFor="phone">Phone Number:</label><br />
-              <input type="text" value={phone} className="form-control" placeholder="XXXXXXXXXX" required onChange={(e) => setPhone(e.target.value)} />
-            </section>
-            <br />
-            <section className="input_field">
-              <label htmlFor="email">Email Address:</label><br />
-              <input type="email" value={email} className="form-control" placeholder="john@example.com" required onChange={(e) => setEmail(e.target.value)} />
-            </section>
-            <br />
-            <section className="input_field">
-              <label htmlFor="message">Your Message:</label><br />
-              <textarea className="form-control" value={message} required onChange={(e) => setMessage(e.target.value)} />
-            </section>
-            <br />
-            <section className="btn">
-              <button type="submit" className="submitBtn">Submit</button>
-            </section>
-          </form>
+          <Formik
+          initialValues={{
+            firstName: '',
+            lastName: '',
+            email: '',
+            message: '',
+          }} 
+          validationSchema={Yup.object({
+            firstName: Yup.string()
+              .min(3, 'Must be at least 3 characters')
+              .max(15, 'Must be 15 characters or less')
+              .required('This field is required'),
+            lastName: Yup.string()
+              .min(3, 'Must be at least 3 characters')
+              .max(15, 'Must be 15 characters or less')
+              .required('This field is required'),
+            email: Yup.string()
+              .email('Invalid email address')
+              .required('This field is required'),
+            message: Yup.string()
+              .min(50, 'Must be at least 50 characters')
+              .max(650, 'Must be less than 650 characters')
+              .required('This field is required'),
+
+          })}>
+              <Form onSubmit={handleSubmit}>
+                <input label="First Name: " name="firstName"  type="text" placeholder="Anakin" onChange={handleChange} />
+                <br />
+                <input label="Last Name: " name="lastName"  type="text" placeholder="Skywalker" onChange={handleChange} />
+                <br />
+                <input label="Email: " name="email" type="email" placeholder="anakin@starwars.com" onChange={handleChange} />
+                <br />
+                <textarea label="Message: " name="message"  type="textarea" placeholder="Type your message here" onChange={handleChange} />  
+                <br />
+                <button type="submit">Submit</button>
+              </Form>
+          </Formik>
+          
         </article>
       </article>
     );
   }
+
+
+
  
 export default Contact;
