@@ -4,8 +4,6 @@ import * as Yup from 'yup';
 import axios from 'axios';
 
 
-
-
 const Contact = () => {
   const [userInput, setUserInput] = useState(
     { firstName: '', lastName: '', email: '', message: '' }
@@ -18,7 +16,7 @@ const handleChange = (e) => {
 
 const handleSubmit = (e) => {
   e.preventDefault(
-    axios.post(`http://localhost:3000/contact_form/entries`, userInput)
+    axios.post(`http://localhost:5000/contact_form/entries`, userInput)
       .then(function (response) {
         console.log(response)
         alert('Your message was submitted successfully')
@@ -29,7 +27,6 @@ const handleSubmit = (e) => {
       })
   )
 }
-  
 
 
     return (
