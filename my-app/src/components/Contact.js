@@ -30,15 +30,17 @@ const handleSubmit = (e) => {
 
 
     return (
-        <article>
+        <article className="contactContent">
         <section className="top-container">
-          <h1>Lindsay Wilhelm</h1>
-          <h4>Future Web Developer</h4>
+        <h1 className="contentHeader">Lindsay Wilhelm</h1>
+          <h4 className="contentSubHeader">Future Web Developer</h4>
         </section>
         <hr />
+        <section className="contactContent">
         <h2>Get In Touch</h2>
         <p>Send me a message and I'll get back to you as soon as possible!</p>
-        <article>
+        </section>
+        <article className="contactContent">
           <Formik
           initialValues={{
             firstName: '',
@@ -73,7 +75,7 @@ const handleSubmit = (e) => {
                 <br />
                 <textarea label="Message: " name="message"  type="textarea" placeholder="Type your message here" onChange={handleChange} />  
                 <br />
-                <button type="submit">Submit</button>
+                <button className="button" type="submit">Submit</button>
               </Form>
           </Formik>
           

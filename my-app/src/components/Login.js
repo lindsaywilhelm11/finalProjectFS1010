@@ -9,7 +9,7 @@ function Login() {
     let history = useHistory();
     let location = useLocation();
     const [isAuth, setIsAuth] = useState(false)
-    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
     const handleSubmit = async event => {
@@ -17,39 +17,44 @@ function Login() {
         const response = await fetch('http://localhost:5000/auth', {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Accept': "application/json",
+                'Content-Type': "application/json"
             },
-            body: JSON.stringify({username, password})
+            body: JSON.stringify({email, password})
         })
         const payload = await response.json()
         if (response.status >= 400) {
             setIsAuth(false)
+            alert('Unable to verify credentials')
         } else {
             sessionStorage.setItem('token', payload.token)
 
-            let { from } = location.state || { from: { pathname: "/" } };
+            let { from } = location.state || { from: { pathname: "/login" } };
             history.replaceState(from);
         }
     }
 
     return (
         
-        <div className="login">
+        <section className="login">
             <Router>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Username" value={username}  onChange={e => setUsername(e.target.value)}/>
-            <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-            </form>
-            
+            <h1 className="contentHeader">Lindsay Wilhelm</h1>
+            <h4 className="contentSubHeader">Future Web Developer</h4>
+            <hr />
+            <h1 className="loginContent">Login</h1>
+            <form className="loginContent" onSubmit={handleSubmit}>
+            <input type="email" placeholder="Email"  onChange={e => setEmail(e.target.value)}/>
+            <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+            <br />
                 <Route path="/login" exact>
-                <button onClick={()=> {setIsAuth(true);}} >Login</button>
+                <button className="button" onClick={()=> {setIsAuth(true);}}>Login</button>
                 </Route>
+                </form>
+                </Router>  
            
             <ProtectedRoute path="/users" component={Users} isAuth={isAuth} />
-            </Router>  
-        </div>
+            
+        </section>
     )
 
     

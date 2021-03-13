@@ -9,11 +9,12 @@ function Navigation() {
     return (
        <div>
           <ul className='navLink'>
-          <Link style={navStyle} to="/"><li>Home</li></Link>
-          <Link style={navStyle} to="/about"><li>About</li></Link>
-          <Link style={navStyle} to="/portfolio"><li>Portfolio</li></Link>
-          <Link style={navStyle} to="/resume"><li>Resume</li></Link>
-          <Link style={navStyle} to="/contact"><li>Contact</li></Link>
+          <Link className="navbar" style={navStyle} to="/">Home</Link>
+          <Link className="navbar" style={navStyle} to="/about">About</Link>
+          <Link className="navbar" style={navStyle} to="/portfolio">Portfolio</Link>
+          <Link className="navbar" style={navStyle} to="/resume">Resume</Link>
+          <Link className="navbar" style={navStyle} to="/contact">Contact</Link>
+          <Link className="navbar" style={navStyle} to="/login">Login</Link>
           </ul>
        </div>
     );

@@ -12,7 +12,7 @@ const home = () => {
           <h4 className="homeSubHeading">Future Web Developer</h4>
         </main>
         <footer>
-          <a href="about.html" className="homeButton">Check Out My Personal Site</a>
+          
         </footer>
       </div>
     );

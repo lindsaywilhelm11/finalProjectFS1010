@@ -8,11 +8,11 @@ const Resume = () => {
         <link rel="stylesheet" href="PSstylesheet.css" />
         
         <article className="resume-container">
-          <h1>Lindsay Wilhelm</h1>
-          <h4>Future Web Developer</h4>
+        <h1 className="contentHeader">Lindsay Wilhelm</h1>
+          <h4 className="contentSubHeader">Future Web Developer</h4>
         </article>
         <hr />
-        <main>
+        <main className="resumeContent">
           <h3>Education</h3>
           <h4>
             <li>York University Continuing Education</li>
